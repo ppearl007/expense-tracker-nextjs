@@ -1,6 +1,9 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+const Header = async () => {
+    const user = await checkUser()
+
     return ( 
         <nav className="navbar">
             <div className="navbar-container">
@@ -10,9 +13,7 @@ const Header = () => {
                         <SignInButton></SignInButton>
                     </SignedOut>
                     <SignedIn>
-                        <UserButton>
-                            
-                        </UserButton>
+                        <UserButton />
                     </SignedIn>
                 </div>
             </div>
